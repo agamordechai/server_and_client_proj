@@ -29,10 +29,11 @@ def main():
     Main function to start the client and connect to the server.
     Returns: None
     """
+    client_name = input("Enter your name: ")
+
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((HOST, PORT))
 
-    client_name = input("Enter your name: ")
     client_socket.send(client_name.encode('utf-8'))
 
     receive_thread = threading.Thread(target=receive_messages, args=(client_socket,))

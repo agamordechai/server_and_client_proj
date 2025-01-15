@@ -26,6 +26,7 @@ def handle_client(client_socket):
             if not message:
                 break
             broadcast(f"{client_name}: {message}", client_socket)
+            print(f"{client_name}: {message}")
         except:
             clients.remove(client_socket)
             client_socket.close()
