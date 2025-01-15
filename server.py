@@ -10,6 +10,13 @@ MAX_CLIENTS = 5
 clients = []
 
 def handle_client(client_socket):
+    """
+    Handles a client connection by receiving messages from the client and broadcasting them to all connected clients.
+    Args:
+        client_socket: The socket object of the connected client
+
+    Returns: None
+    """
     client_name = client_socket.recv(1024).decode('utf-8')
     welcome_message = f"{client_name} has joined the chat!"
     broadcast(welcome_message, client_socket)
@@ -26,6 +33,14 @@ def handle_client(client_socket):
             break
 
 def broadcast(message, sender_socket):
+    """
+    Broadcasts a message to all connected clients except the sender.
+    Args:
+        message: The message to broadcast.
+        sender_socket: The socket of the client who sent the message.
+
+    Returns: None
+    """
     for client in clients:
         if client != sender_socket:
             try:
@@ -35,6 +50,11 @@ def broadcast(message, sender_socket):
                 client.close()
 
 def main():
+    """
+    Main function to start the server and listen for incoming connections.
+
+    Returns: None
+    """
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind((HOST, PORT))
     server.listen(MAX_CLIENTS)

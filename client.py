@@ -6,6 +6,13 @@ HOST = '127.0.0.1'
 PORT = 12345
 
 def receive_messages(client_socket):
+    """
+    Receives messages from the server and prints them to the console.
+    Args:
+        client_socket: The socket object of the client.
+
+    Returns: None
+    """
     while True:
         try:
             message = client_socket.recv(1024).decode('utf-8')
@@ -18,6 +25,10 @@ def receive_messages(client_socket):
             break
 
 def main():
+    """
+    Main function to start the client and connect to the server.
+    Returns: None
+    """
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client_socket.connect((HOST, PORT))
 
