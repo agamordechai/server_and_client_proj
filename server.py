@@ -4,7 +4,7 @@ import threading
 # Server configuration
 HOST = '127.0.0.1'
 PORT = 12345
-MAX_CLIENTS = 5
+MAX_CLIENTS = 10
 
 # List to keep track of connected clients
 clients = []
