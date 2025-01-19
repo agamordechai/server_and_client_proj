@@ -25,6 +25,10 @@ def receive_messages(client_socket):
             break
 
 def main():
+    """
+    Main function to run the client.
+    Returns: None
+    """
     client_name = input("Enter your name: ")
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
