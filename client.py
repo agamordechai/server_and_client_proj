@@ -25,10 +25,6 @@ def receive_messages(client_socket):
             break
 
 def main():
-    """
-    Main function to start the client and connect to the server.
-    Returns: None
-    """
     client_name = input("Enter your name: ")
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -44,7 +40,10 @@ def main():
         if message.lower() == 'exit':
             client_socket.close()
             break
-        client_socket.send(message.encode('utf-8'))
+        if message.startswith("@"):
+            client_socket.send(message.encode('utf-8'))
+        else:
+            client_socket.send(message.encode('utf-8'))
 
 if __name__ == "__main__":
     main()
